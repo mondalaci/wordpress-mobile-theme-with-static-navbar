@@ -72,3 +72,25 @@ function omega_theme_setup() {
 }
 
 add_action( 'after_setup_theme', 'omega_theme_setup' );
+
+/**
+ * Disable WordPress theme update checks
+ * If there is a theme in the repo with the same name,
+ * this prevents WP from prompting an update.
+ *
+ * @link http://markjaquith.wordpress.com/2009/12/14/excluding-your-plugin-or-theme-from-update-checks/
+ * @author Mark Jaquith
+ * @since 1.0.0
+ *
+ **/
+
+function afn_prevent_theme_update( $r, $url ) {
+    if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
+        return $r; // Not a theme update request. Bail immediately.
+    $themes = unserialize( $r['body']['themes'] );
+    unset( $themes[ get_option( 'template' ) ] );
+    unset( $themes[ get_option( 'stylesheet' ) ] );
+    $r['body']['themes'] = serialize( $themes );
+    return $r;
+}
+add_filter( 'http_request_args', 'afn_prevent_theme_update', 5, 2 );
