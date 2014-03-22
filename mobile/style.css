@@ -22,10 +22,6 @@ Defaults
 /* Typographical Elements
 --------------------------------------------- */
 
-body {
-	padding-top: 30px;
-}
-
 ::-moz-selection {
 	background: #333;
 	color: #fff;
@@ -237,10 +233,6 @@ Structure and Layout
 
 /* Site Containers
 --------------------------------------------- */
-body.admin-bar .navbar {
-	top: 28px
-}
-
 body {
   
 }
@@ -252,7 +244,6 @@ body {
 
 .site-inner {	
 	clear: both;
-	padding-top: 40px;
 }
 
 /* Column Widths and Positions
@@ -346,6 +337,10 @@ img.alignleft,
 
 .wp-caption {
 	max-width: 100%;
+	border: 1px solid #ddd;
+	text-align: center;
+	background-color: #f3f3f3;
+	padding: 4px;
 }
 
 img.alignright,
@@ -481,7 +476,6 @@ Content Area
 }
 
 .entry-footer .entry-meta {
-	border-top: 1px dashed #e5e5e5;
 	margin: 0;
 	padding: 8px 0px 8px;
 }
@@ -706,7 +700,7 @@ Site Footer
 
 .site-footer {
 	border-top: 1px dashed #e5e5e5;
-	padding: 40px 0;
+	padding-bottom: 10px;
 	text-align: center;
 }
 
